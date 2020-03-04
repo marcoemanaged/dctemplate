@@ -5,6 +5,8 @@ services:
     build: proxy
     depends_on:
       - website
+      - exchange
+      - filehandler
     ports:
       - "80:80"
   website:
@@ -12,6 +14,16 @@ services:
     build: website
     volumes:
       - "${WEBSITE_VOLUME}:/src"
+  exchange:
+    container_name: "exchange"
+    build: exchange
+    volumes:
+      - "${EXCHANGE_VOLUME}:/src"
+  filehandler:
+    container_name: "filehandler"
+    build: filehandler
+    volumes:
+      - "${FILEHANDLER_VOLUME}:/src"
   rabbitmq:
     image: rabbitmq:3-management
     container_name: "rabbitmq"

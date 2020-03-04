@@ -1,8 +1,8 @@
 {
     "apps": [{
-      "name": "website",
+      "name": "filehandler",
       "watch": true,
-      "ignore_watch" : [".git", "node_modules", "assets", "views"],
+      "ignore_watch" : [".git", "node_modules"],
       "watch_options": {
         "persistent": true,
         "ignoreInitial": true,
