@@ -1,0 +1,25 @@
+version : '3'
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: "rabbitmq"
+    ports:
+      - "15672:15672"
+  mssqldb:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: "mssqldb"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=password(!)123
+      - MSSQL_PID=Developer
+    ports:
+      - '1433:1433'
+  mongodb:
+    image: mongo
+    container_name: "mongodb"
+    volumes:
+      - emanagedmongo-volume:/data/db
+    ports:
+      - '27017-27019:27017-27019'
+volumes:
+  emanagedmongo-volume:
