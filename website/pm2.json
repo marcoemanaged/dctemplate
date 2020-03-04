@@ -1,0 +1,20 @@
+{
+    "apps": [{
+      "name": "true",
+      "watch": false,
+      "ignore_watch" : [".git", "node_modules", "content", "views"],
+      "watch_options": {
+        "persistent": true,
+        "ignoreInitial": true,
+        "usePolling": true
+      },
+      "script": "./app.js",
+      "instances": 1,
+      "post-deploy": "npm install",
+      "env": {
+        "PORT": 80,
+        "NODE_ENV": "dev",
+        "DEBUG_PORT": 5454
+      }
+    }]
+  }

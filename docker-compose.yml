@@ -1,5 +1,17 @@
 version : '3'
 services:
+  proxy:
+    container_name: "proxy"
+    build: proxy
+    depends_on:
+      - website
+    ports:
+      - "80:80"
+  website:
+    container_name: "website"
+    build: website
+    volumes:
+      - "${WEBSITE_VOLUME}:/src"
   rabbitmq:
     image: rabbitmq:3-management
     container_name: "rabbitmq"
